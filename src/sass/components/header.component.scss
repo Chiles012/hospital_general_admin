@@ -1,0 +1,26 @@
+header {
+
+    padding: 1rem;
+    background-color: #fff;
+    width: calc(100% - 2rem);
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            font-size: 1.5rem;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 0;
+            color: #5b70f4;
+        }
+
+        i {
+            font-size: 1.5rem;
+            color: #5b70f4;
+        }
+    }
+
+}
