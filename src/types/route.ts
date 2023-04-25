@@ -3,4 +3,5 @@ export type route = {
     component: React.ComponentType;
     exact?: boolean;
     icon?: string;
+    name?: string;
 };

@@ -2,6 +2,43 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+.card_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    .accions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        i {
+            font-size: 1rem;
+            color: #5b70f4;
+            cursor: pointer;
+        }
+
+        i:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.content-page {
+    height: calc(100vh - 100px);
+    padding: 20px;
+    overflow-y: auto;
+    position: absolute;
+    top: 60px;
+    left: 200px;
+    width: calc(100% - 240px);
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,18 +59,19 @@ h1 {
 }
 
 a {
-    color: #5b70f4;
+    color: #fff;
     font-family: 'Nunito', sans-serif;
     font-weight: bold;
     text-decoration: none;
 }
 
-input {
+input, textarea {
     font-family: 'Nunito', sans-serif;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    width: calc(98% - 20px);
 }
 
 select {
@@ -107,6 +145,30 @@ select {
     p {
         text-align: justify;
     }
+
+    .accions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        i {
+            font-size: 1.5rem;
+            color: #5b70f4;
+            cursor: pointer;
+        }
+
+        i:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid-2 {

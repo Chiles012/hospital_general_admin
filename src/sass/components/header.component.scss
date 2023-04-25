@@ -3,6 +3,7 @@ header {
     padding: 1rem;
     background-color: #fff;
     width: calc(100% - 2rem);
+    background-color: #5b70f4;
 
     nav {
         display: flex;
@@ -14,12 +15,12 @@ header {
             color: #444;
             font-weight: bold;
             margin-bottom: 0;
-            color: #5b70f4;
+            color: #fff;
         }
 
         i {
             font-size: 1.5rem;
-            color: #5b70f4;
+            color: #fff;
         }
     }
 

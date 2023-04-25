@@ -1,39 +1,40 @@
-import { useSelector } from "react-redux"
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { routes, login } from "../utils/routes"
-import { useEffect } from "react";
 import Layout from "./Layout";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 const NavigationRoutes = () => {
 
     const { user } = useSelector((state: any) => state.user);
-    const navigate = useNavigate();
+    const navigation = useNavigate()
+
+    useEffect(() => {
+        if(user === null) {
+            navigation('/login')
+        }
+    }, [user])
 
     return (
         <>
             {
-                !user ? (
-                    <Layout>
-                        <Routes>
-                            {
-                                routes.map((route, index) => (
-                                    <Route key={index} path={route.path} element={<route.component/>} />
-                                ))
-                            }
-                        </Routes>
-                    </Layout>
-                ) : (
-                    <Layout>
-                        <Routes>
-                            {
-                                routes.map((route, index) => (
-                                    <Route key={index} path={route.path} element={<route.component/>} />
-                                ))
-                            }
-                        </Routes>
-                    </Layout>
-                )
+                user !== null ?
+                <Layout>
+                    <Routes>
+                        {
+                            routes.map((route, index) => (
+                                <Route key={index} path={route.path} element={<route.component/>} />
+                            ))
+                        }
+                    </Routes>
+                </Layout>
+                : 
+                <Routes>
+                    {
+                        <Route path={login.path} element={<login.component/>} />
+                    }
+                </Routes>
             }
         </>
     )

@@ -1,6 +1,35 @@
+import { useEffect, useState } from 'react'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import '../sass/pages/login.page.scss'
+import app from '../config/config/firebase.config'
+import { useDispatch } from 'react-redux'
 
 const Login = () => {
+
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+
+    const dispatch = useDispatch()
+
+    const login = async () => {
+
+        const auth = getAuth(app);
+
+        try {
+            
+            const user = await signInWithEmailAndPassword(auth, name, password)
+
+            dispatch({
+                type: 'SET_USER',
+                payload: user
+            })
+
+        } catch (error: any) {
+            alert(error.message || 'Credenciales Incorrectas')
+        }
+
+    }
+
     return (
         <div className="login container">
             <div className="login-content">
@@ -9,13 +38,16 @@ const Login = () => {
                 <form>
                     <div className="input-icon">
                         <i className="fas fa-user"></i>
-                        <input type="text" placeholder="Usuario" />
+                        <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Usuario" />
                     </div>
                     <div className="input-icon">
                         <i className="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" />
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Contraseña" />
                     </div>
-                    <button className="btn">Iniciar Sesión</button>
+                    <button onClick={(e) => {
+                        e.preventDefault()
+                        login()
+                    }} className="btn">Iniciar Sesión</button>
                 </form>
             </div>
         </div>
