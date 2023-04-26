@@ -1,8 +1,7 @@
-import { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { FC, useState } from "react";
 import Modal from "react-modal"
 import CardUser from "./CardUser";
-import { getFirestore, getDocs, collection, addDoc, deleteDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 import app from "../config/config/firebase.config";
 
 const Card:FC<{ especialidad: any, onDelete: any, get: any }> = ({ especialidad, onDelete, get }) => {

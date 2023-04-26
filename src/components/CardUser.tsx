@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import Modal from "react-modal"
 import app from "../config/config/firebase.config";
 
-const CardUser:FC<{ user: any, disabled: boolean, get: any }> = ({ user, disabled, get }) => {
+const CardUser:FC<{ user: any, disabled?: boolean, get?: any }> = ({ user, disabled, get }) => {
 
     const [openModal, setOpenModal] = useState(false)
     const [openModalDetail, setOpenModalDetail] = useState(false)
