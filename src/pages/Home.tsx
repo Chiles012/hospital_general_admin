@@ -49,8 +49,9 @@ const Home = () => {
             nombre,
             descripcion,
             date: new Date(),
-            usuarios: [],
-            vuelta: 0
+            users: [],
+            vuelta: 1,
+            active: true
         });
 
         setOpenModal(false)
@@ -60,6 +61,10 @@ const Home = () => {
         setNombre('')
 
     }
+
+    useEffect(() => {
+        console.log(especialidades)
+    }, [especialidades])
 
     useEffect(() => {
         getSpecialidades()
@@ -110,7 +115,7 @@ const Home = () => {
                         e.preventDefault()
                         createEspecialidad()
                     }} className="btn">Crear</button>
-                    <button onClick={() => setOpenModal(false)} className="btn">Cancelar</button>
+                    <button onClick={(e) => {e.preventDefault(); setOpenModal(false)}} className="btn">Cancelar</button>
                 </form>
             </Modal>
         </div>

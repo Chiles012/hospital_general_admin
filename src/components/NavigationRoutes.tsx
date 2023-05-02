@@ -11,6 +11,7 @@ const NavigationRoutes = () => {
     const navigation = useNavigate()
 
     useEffect(() => {
+        console.log(user)
         if(user === null) {
             navigation('/login')
         }

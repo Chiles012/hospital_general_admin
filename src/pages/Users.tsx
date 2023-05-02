@@ -4,6 +4,7 @@ import '../sass/pages/user.page.scss'
 import Modal from "react-modal"
 import app from "../config/config/firebase.config"
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore"
+import emailjs from '@emailjs/browser'
 
 const Users = () => {
 
@@ -35,12 +36,23 @@ const Users = () => {
 
         const db = getFirestore(app);
 
-        await addDoc(collection(db, 'usuarios'), {
-            nombre,
-            email,
-            usuario,
-            password,
-            date: new Date()
+        emailjs.send('service_5jr8its', 'template_x93aoiv', {
+            email: email
+        }, 'wp7BlILE1VjsWYsFE').then(async (_) => {
+
+            await addDoc(collection(db, 'usuarios'), {
+                nombre,
+                email,
+                usuario,
+                password,
+                date: new Date()
+            });
+
+            getUsuarios()
+
+        }).catch((error) => {
+            alert('Error al enviar el correo')
+            console.log(error.text);
         });
 
         setOpenModal(false)
@@ -85,8 +97,8 @@ const Users = () => {
                         <i className="fas fa-lock"></i>
                         <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Contraseña" />
                     </div>
-                    <button onClick={() => createUsuario()} className="btn">Registrarse</button>
-                    <button onClick={() => setOpenModal(false)} className="btn">Cancelar</button>
+                    <button onClick={(e) => { e.preventDefault(); createUsuario() }} className="btn">Registrarse</button>
+                    <button onClick={(e) => {e.preventDefault(); setOpenModal(false)}} className="btn">Cancelar</button>
                 </form>
             </Modal>
             <div className="content_page_usuarios">

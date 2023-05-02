@@ -21,7 +21,7 @@ const Login = () => {
 
             dispatch({
                 type: 'SET_USER',
-                payload: user
+                payload: user.user.email
             })
 
         } catch (error: any) {
